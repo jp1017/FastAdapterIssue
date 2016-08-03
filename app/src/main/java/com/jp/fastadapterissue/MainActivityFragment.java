@@ -34,9 +34,6 @@ public class MainActivityFragment extends Fragment {
     private FastItemAdapter<StringItem> mItemAdapter;
     private RecyclerView mRecyclerView;
 
-    private List<StringItem> mItems = new ArrayList<>();
-
-
     public MainActivityFragment() {
     }
 
@@ -65,6 +62,7 @@ public class MainActivityFragment extends Fragment {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         manager.setSpanSizeLookup(new GridLayoutManager.DefaultSpanSizeLookup());
 
+        List<StringItem> mItems = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             StringItem item = new StringItem();
             item.item = "item " + i;
@@ -112,11 +110,12 @@ public class MainActivityFragment extends Fragment {
         Log.d(TAG, "add item " + string + ", thread: " + Thread.currentThread().getName());
         StringItem item = new StringItem();
         item.item = string;
-        mItems.add(0, item);
-
-        Log.w(TAG, "list size: " + mItems.size());
-
-        mItemAdapter.notifyDataSetChanged();
+    
+        //we do not want to manually alter the list or anything. everything is handled from the adapter for you
+        //mItems.add(0, item);
+        
+        //simply add the item
+        mItemAdapter.add(0, item);
     }
 
 
