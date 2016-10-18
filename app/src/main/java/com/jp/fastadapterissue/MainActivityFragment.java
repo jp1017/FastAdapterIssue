@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jp.fastadapterissue.entity.TradeItem;
 import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
 
@@ -27,11 +28,10 @@ import java.util.List;
 public class MainActivityFragment extends Fragment {
     public static final String TAG = "MAINACTIVITYFRAGMENTLOG";
 
-
     private View mViewContent;
     private Button mButton;
 
-    private FastItemAdapter<StringItem> mItemAdapter;
+    private FastItemAdapter<TradeItem> mItemAdapter;
     private RecyclerView mRecyclerView;
 
     public MainActivityFragment() {
@@ -62,10 +62,10 @@ public class MainActivityFragment extends Fragment {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         manager.setSpanSizeLookup(new GridLayoutManager.DefaultSpanSizeLookup());
 
-        List<StringItem> mItems = new ArrayList<>();
+        List<TradeItem> mItems = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            StringItem item = new StringItem();
-            item.item = "item " + i;
+            TradeItem item = new TradeItem();
+            item.item = "item_rv " + i;
             mItems.add(item);
         }
 
@@ -74,47 +74,17 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setLayoutManager(manager);
     }
 
-    class StringItem extends AbstractItem<StringItem, ViewHolder> {
-        private String item;
-
-        @Override
-        public int getType() {
-            return R.id.rl_item;
-        }
-
-        @Override
-        public int getLayoutRes() {
-            return R.layout.item;
-        }
-
-        @Override
-        public void bindView(ViewHolder holder) {
-            super.bindView(holder);
-            holder.mTextView.setText(item);
-        }
-    }
-
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
-        protected final View view;
-        private TextView mTextView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            view = itemView;
-            mTextView = (TextView) view.findViewById(R.id.tv_item);
-        }
-    }
 
     @Subscribe
     public void addItem(String string) {
-        Log.d(TAG, "add item " + string + ", thread: " + Thread.currentThread().getName());
-        StringItem item = new StringItem();
+        Log.d(TAG, "add item_rv " + string + ", thread: " + Thread.currentThread().getName());
+        TradeItem item = new TradeItem();
         item.item = string;
     
         //we do not want to manually alter the list or anything. everything is handled from the adapter for you
-        //mItems.add(0, item);
+        //mItems.add(0, item_rv);
         
-        //simply add the item
+        //simply add the item_rv
         mItemAdapter.add(0, item);
     }
 

@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.jp.fastadapterissue"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -19,12 +20,19 @@ android {
     }
 }
 
+greendao {
+    schemaVersion 1
+    daoPackage'com.jp.fastadapterissue.dao'
+    targetGenDir'src/main/java'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
-    compile('com.mikepenz:fastadapter:1.6.0@aar') {
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile('com.mikepenz:fastadapter:1.8.2@aar') {
         transitive = true
     }
     compile 'org.greenrobot:eventbus:3.0.0'

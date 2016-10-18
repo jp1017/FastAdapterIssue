@@ -18,7 +18,7 @@ public class AnotherActivity extends AppCompatActivity {
     }
 
     /**
-     * add an item to main fragment
+     * add an item_rv to main fragment
      * @param view
      */
     public void addClick(View view) {
