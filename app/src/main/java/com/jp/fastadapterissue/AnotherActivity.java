@@ -1,20 +1,18 @@
 package com.jp.fastadapterissue;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 
 public class AnotherActivity extends AppCompatActivity {
-    public static int i;
+    public int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another);
-
     }
 
     /**
@@ -26,7 +24,7 @@ public class AnotherActivity extends AppCompatActivity {
          * {@link MainActivityFragment#addItem(String)}
          */
         i++;
-        EventBus.getDefault().post(i + "");
+        EventBus.getDefault().post("item_add_" + i);
 
     }
 }

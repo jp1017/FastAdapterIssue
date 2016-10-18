@@ -40,18 +40,9 @@
 
 package com.jp.fastadapterissue.entity;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
-
-import com.jp.fastadapterissue.R;
-import com.mikepenz.fastadapter.items.AbstractItem;
-
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-
-import java.util.List;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 
 
@@ -68,36 +59,19 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 
 @Entity
-public class TradeItem extends AbstractItem<TradeItem, TradeItem.ViewHolder> {
+public class TradeEntity {
     @Id
     private Long _id;
     public String item;
 
-    @Generated(hash = 18791350)
-    public TradeItem(Long _id, String item) {
+    @Generated(hash = 273989011)
+    public TradeEntity(Long _id, String item) {
         this._id = _id;
         this.item = item;
     }
 
-    @Generated(hash = 270159598)
-    public TradeItem() {
-    }
-
-    @Override
-    public int getType() {
-        return R.id.rl_item;
-    }
-
-    @Override
-    public int getLayoutRes() {
-        return R.layout.item_rv;
-    }
-
-
-    @Override
-    public void bindView(ViewHolder holder, List payloads) {
-        super.bindView(holder, payloads);
-        holder.mTextView.setText(item);
+    @Generated(hash = 825917590)
+    public TradeEntity() {
     }
 
     public String getItem() {
@@ -116,16 +90,6 @@ public class TradeItem extends AbstractItem<TradeItem, TradeItem.ViewHolder> {
         this._id = _id;
     }
 
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
-        protected final View view;
-        private TextView mTextView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            view = itemView;
-            mTextView = (TextView) view.findViewById(R.id.tv_item);
-        }
-    }
 }
 
 
